@@ -1,0 +1,75 @@
+﻿/* 请在左侧选择或在这里编辑模板，然后通过菜单栏或右键菜单的【生成预览】功能进行预览结果 */
+
+这是一个学习模板，通过这个模板，你可以了解到常用的模板配置方式
+
+@* 这是一个注释，不会输出到结果 *@
+
+	 My Name is SevenTiny
+
+@*
+    'Razor语法'
+    通过 '@' 符号标识这是段脚本代码，例如下面会循环输出 "this is line:1-3"
+*@
+
+@foreach (var item in new[] { 1, 2, 3 })
+{
+    @: this is line: @item
+}
+
+
+@*
+    '多行脚本'
+    您可以用 '@{' '}' 包裹多行脚本代码，用来处理复杂的生成逻辑
+*@
+
+@{
+
+    int a = 0;
+
+    while (a < 50)
+    {
+        a++;
+
+        if (a % 5 == 0)
+        {
+    @: 这是一个5的倍数 @a
+        }
+    }
+}
+
+@* '语法支持'
+    Razor模板支持全部的 CSharp 语法，您可以在模板中使用 CSharp 内置变量或函数，例如：获取当前时间
+*@
+
+	 Generate Time: @DateTime.Now
+
+
+* ==================== 关于输入设置  ====================
+*
+* Razor 引擎支持处理输入变量，我们可以在生成器右侧的输入设置中配置您的输入变量
+* 例如右侧配置 【设置项】为 ClassName，【值】为Student
+* 我们可以在模板中用 Model.ClassName 获取输入变量，变量的项和值您可以随意定义
+* 由于您的输入设置中可能没有设置 【设置项】= ClassName 的变量，这时点击【生成预览】会出现错误，因此我们把下面的命令先注释掉了
+* 如果要测试输入变量效果，您可以在输入设置中配置 ClassName 并且去掉注释后尝试执行【生成预览】当然您可以将 ClassName 换成任意您喜欢的名称
+*
+* ======================================================
+
+
+    @* 这是一个输入变量，我们可以通过 @Model.ClassName 语法获得 *@
+
+
+* ==================== 关于输出设置  ====================
+*
+* 配置输出文件名时，也可以使用模板语法进行配置
+* 例如输出路径的值配置为：
+* Demo/@(Model.ClassName+"Repository.cs")
+* 在ClassName = Student的输入设置下最终输出的文件为 /OutPut/Demo/ 文件夹下的 StudentRepository.cs 文件
+*
+* ======================================================
+
+更多Razor语法的学习可以参考：
+[1] ASP.NET Core 的 Razor 语法参考 https://docs.microsoft.com/zh-cn/aspnet/core/mvc/views/razor?view=aspnetcore-5.0
+[2] 菜鸟教程 https://www.runoob.com/aspnet/razor-intro.html
+
+更多关于本工具的信息请参考：
+[1] https://www.cnblogs.com/7tiny/p/15234048.html

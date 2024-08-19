@@ -1,0 +1,87 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <AssemblyName>NuGenerator</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="execute.png" />
+    <None Remove="favicon.ico" />
+    <None Remove="Images\about.png" />
+    <None Remove="Images\add.png" />
+    <None Remove="Images\code.png" />
+    <None Remove="Images\csharp.png" />
+    <None Remove="Images\del.png" />
+    <None Remove="Images\execute.png" />
+    <None Remove="Images\exit.png" />
+    <None Remove="Images\expand.png" />
+    <None Remove="Images\export.png" />
+    <None Remove="Images\file.png" />
+    <None Remove="Images\folder.png" />
+    <None Remove="Images\icon.png" />
+    <None Remove="Images\othersave.png" />
+    <None Remove="Images\referesh.png" />
+    <None Remove="Images\remove.png" />
+    <None Remove="Images\route.png" />
+    <None Remove="Images\save.png" />
+    <None Remove="Images\select.png" />
+    <None Remove="Images\setting.png" />
+    <None Remove="Images\T.png" />
+    <None Remove="Images\template.png" />
+    <None Remove="Images\unexpand.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AvalonEdit" Version="6.1.2.30" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.7" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="RazorEngine.NetCore" Version="3.1.0" />
+    <PackageReference Include="SevenTiny.Bantina" Version="1.0.74" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="favicon.ico" />
+    <Resource Include="Images\about.png" />
+    <Resource Include="Images\add.png" />
+    <Resource Include="Images\code.png" />
+    <Resource Include="Images\csharp.png" />
+    <Resource Include="Images\del.png" />
+    <Resource Include="Images\execute.png" />
+    <Resource Include="Images\exit.png" />
+    <Resource Include="Images\expand.png" />
+    <Resource Include="Images\export.png" />
+    <Resource Include="Images\file.png" />
+    <Resource Include="Images\folder.png" />
+    <Resource Include="Images\icon.png" />
+    <Resource Include="Images\othersave.png" />
+    <Resource Include="Images\referesh.png" />
+    <Resource Include="Images\remove.png" />
+    <Resource Include="Images\route.png" />
+    <Resource Include="Images\save.png" />
+    <Resource Include="Images\select.png" />
+    <Resource Include="Images\setting.png" />
+    <Resource Include="Images\T.png" />
+    <Resource Include="Images\template.png" />
+    <Resource Include="Images\unexpand.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Settings\global.setting.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Settings\input.setting.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Settings\output.setting.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\demo.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,110 @@
+﻿<UserControl x:Class="SevenTinySoftware.NuGenerator.UserControls.CheckBoxTreeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:models="clr-namespace:SevenTinySoftware.NuGenerator.Models"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Image">
+            <Setter Property="Width" Value="15"/>
+            <Setter Property="Margin" Value="0,0,-10,0"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <TreeView Name="checkBoxTreeView">
+            <TreeView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Name="menuAllAdd" Header="新增" Click="menuAllAdd_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/add.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="menuAllReferesh" Header="刷新" Click="menuAllReferesh_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/referesh.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="menuExpandAll" Header="全部展开" Click="menuExpandAll_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/expand.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="menuUnExpandAll" Header="全部折叠" Click="menuUnExpandAll_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/unexpand.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="menuSelectAll" Header="全部选中" Click="menuSelectAll_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/select.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="menuUnSelectAll" Header="全部取消" Click="menuUnSelectAll_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/remove.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="打开模板目录" x:Name="menu_OpenTemplateFolder" Click="menu_OpenTemplateFolder_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/template.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </TreeView.ContextMenu>
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="TreeViewItem">
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"></Setter>
+                    <EventSetter Event="TreeViewItem.PreviewMouseRightButtonDown" Handler="TreeViewItem_PreviewMouseRightButtonDown"/>
+                </Style>
+            </TreeView.ItemContainerStyle>
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type models:CheckBoxTreeViewNode}"  ItemsSource="{Binding Children}">
+                    <StackPanel  Margin="-2,1,0,0" Orientation="Horizontal" x:Name="staTree">
+                        <CheckBox ToolTip="{Binding ToolTip}" FontSize="14" FontFamily="微软雅黑" Tag="{Binding Children}" IsChecked="{Binding IsChecked, Mode=TwoWay}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Image VerticalAlignment="Center" Source="{Binding Icon}" Width="15" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding Name}" Background="{Binding BackGround}"  MouseDown="TextBlock_MouseDown" >
+                                <TextBlock.ContextMenu>
+                                    <ContextMenu >
+                                        <MenuItem Name="menuAdd" Header="新增" Click="menuAdd_Click" Visibility="{Binding FolderVisibility}">
+                                            <MenuItem.Icon>
+                                                <Image Source="/Images/add.png" Width="15" Margin="0,0,5,0"/>
+                                            </MenuItem.Icon>
+                                        </MenuItem>
+                                        <MenuItem Name="menuOpenFolderFolder" Header="打开文件夹所在的位置" Click="menuOpenFolderFolder_Click" Visibility="{Binding FolderVisibility}">
+                                            <MenuItem.Icon>
+                                                <Image Source="/Images/route.png" Width="15" Margin="0,0,5,0"/>
+                                            </MenuItem.Icon>
+                                        </MenuItem>
+                                        <MenuItem Name="menuEdit" Header="编辑/设置" Click="menuEdit_Click" Visibility="{Binding ItemVisibility}">
+                                            <MenuItem.Icon>
+                                                <Image Source="/Images/code.png" Width="15" Margin="0,0,5,0"/>
+                                            </MenuItem.Icon>
+                                        </MenuItem>
+                                        <MenuItem Name="menuOpenFolder" Header="打开文件所在的位置" Click="menuOpenFolder_Click" Visibility="{Binding ItemVisibility}">
+                                            <MenuItem.Icon>
+                                                <Image Source="/Images/route.png" Width="15" Margin="0,0,5,0"/>
+                                            </MenuItem.Icon>
+                                        </MenuItem>
+                                        <MenuItem Name="menuDel" Header="删除" Click="menuDel_Click" Visibility="{Binding ItemVisibility}">
+                                            <MenuItem.Icon>
+                                                <Image Source="/Images/del.png" Width="15" Margin="0,0,5,0"/>
+                                            </MenuItem.Icon>
+                                        </MenuItem>
+                                    </ContextMenu>
+                                </TextBlock.ContextMenu>
+                            </TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                    <HierarchicalDataTemplate.Triggers>
+                        <!--<DataTrigger Binding="{Binding IsChecked}" Value="true">
+                            <Setter TargetName="staTree" Property="Background" Value="White"/>
+                        </DataTrigger>-->
+                    </HierarchicalDataTemplate.Triggers>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+    </Grid>
+</UserControl>
